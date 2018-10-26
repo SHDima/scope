@@ -29,9 +29,24 @@ const list = document.getElementById('list');
 
 // Сигнатура map
 function map(list, fn){
-    // todo
+   let sortArr = fn(arr);
+   sortArr.forEach(function(item,i,arr){
+   	list.appendChild(item);
+   	console.log(item);
+   })
  }
-
+	function sort(arr){
+	   let sortArr = arr.sort();
+	   let node = [];
+	       sortArr.forEach(function(item,i,arr){
+	       	node[i] = document.createElement('li');
+	       	node[i].setAttribute('class', 'list-group-item');
+            node[i].innerText = item;
+            arr[i] = node[i];
+	   })
+      return sortArr;
+    }
+   map(list,sort);
 
 
 </script>
