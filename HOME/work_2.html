@@ -48,6 +48,38 @@ let users = [
  {id: 9, name: "Willy", age: "20"}
 ]
 
+var copyArr = users.splice(0);
+    copyArr.sort(function(a,b) {
+        return a.age - b.age;
+    })
+     const option = [];
+     const div = [];
+     var index = null;
+    copyArr.forEach(function(item,i,arr){
+            if(item.age > index ||index === null){
+                index = item.age;
+                option[i] = document.createElement('option');
+                option[i].setAttribute('value',item.age);
+                option[i].innerText = item.age;
+                usersSelect.appendChild(option[i]);
+            }
+    })
+    usersSelect.addEventListener('change',function(){
+        while (res.firstChild) {
+            res.removeChild(res.firstChild);
+        }
+        console.log(usersSelect.value)
+        copyArr.forEach(function(item,i,arr){
+           if(usersSelect.value === item.age){
+           div[i] = document.createElement('div');
+           div[i].innerText = item.name;
+           res.appendChild(div[i]);
+           }
+        })
+    })
+
+
+
 </script>
 
 
